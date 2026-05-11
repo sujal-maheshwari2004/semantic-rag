@@ -1,5 +1,5 @@
 """
-Embedding cache —> sha256(text) to np.ndarray.
+Embedding cache -> sha256(text) to np.ndarray.
 Backed by a .npy array + .json index on disk.
 In production this would be Cloud Memorystore or a
 Vertex AI embedding endpoint response cache.
@@ -8,13 +8,19 @@ Thread-safety:
     A threading.Lock guards all in-memory mutations.
     Disk writes use atomic rename (write to .tmp, then os.replace)
     so a crash mid-write never leaves a corrupt cache file.
-    Concurrent readers are safe because numpy load is read-only and
-    the index dict is replaced atomically on load.
+
+Windows note:
+    numpy.save(path) silently appends '.npy' to paths that don't
+    already end in '.npy', so writing to 'vectors.npy.tmp' produces
+    'vectors.npy.tmp.npy' and os.replace() cannot find the source.
+    Fix: serialise into a BytesIO buffer, then write raw bytes via
+    Path.write_bytes() — full control of the filename, cross-platform.
 """
 
 from __future__ import annotations
 
 import hashlib
+import io
 import json
 import os
 import threading
@@ -26,7 +32,7 @@ import numpy as np
 class EmbeddingCache:
     def __init__(self, cache_dir: str = ".cache") -> None:
         self._dir = Path(cache_dir)
-        self._dir.mkdir(exist_ok=True)
+        self._dir.mkdir(parents=True, exist_ok=True)
         self._index_path = self._dir / "index.json"
         self._vectors_path = self._dir / "vectors.npy"
         self._lock = threading.Lock()
@@ -79,17 +85,19 @@ class EmbeddingCache:
         Atomically flush index and vectors to disk.
         Must be called with self._lock held.
 
-        Strategy:
-          1. Write to a sibling .tmp file.
-          2. os.replace() — atomic on POSIX, atomic on Windows (Python 3.3+).
-          This guarantees readers never see a half-written file.
+        numpy.save(path) appends '.npy' when the path doesn't already end
+        in '.npy', so 'vectors.npy.tmp' becomes 'vectors.npy.tmp.npy' and
+        os.replace() fails on Windows.  We serialise into a BytesIO buffer
+        and write raw bytes ourselves to avoid that behaviour.
         """
-        # --- vectors ---
-        vec_tmp = str(self._vectors_path) + ".tmp"
-        np.save(vec_tmp, np.array(self._vectors))
-        os.replace(vec_tmp, str(self._vectors_path))
+        # --- vectors: BytesIO avoids numpy's implicit .npy suffix ---
+        buf = io.BytesIO()
+        np.save(buf, np.array(self._vectors))
+        vec_tmp = self._dir / "vectors.npy.tmp"
+        vec_tmp.write_bytes(buf.getvalue())
+        os.replace(str(vec_tmp), str(self._vectors_path))
 
         # --- index ---
-        idx_tmp = str(self._index_path) + ".tmp"
-        Path(idx_tmp).write_text(json.dumps(self._index))
-        os.replace(idx_tmp, str(self._index_path))
+        idx_tmp = self._dir / "index.json.tmp"
+        idx_tmp.write_text(json.dumps(self._index), encoding="utf-8")
+        os.replace(str(idx_tmp), str(self._index_path))
