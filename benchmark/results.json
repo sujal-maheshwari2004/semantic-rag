@@ -1,0 +1,245 @@
+[
+  {
+    "query": "How does the system handle peak load?",
+    "strategy": "A \u2014 Raw vector search",
+    "expanded_query": null,
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "chunk_00",
+        "score": 0.5157878994941711,
+        "text_snippet": "Horizontal autoscaling dynamically adjusts the number of running service instanc..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "chunk_02",
+        "score": 0.3582162857055664,
+        "text_snippet": "Message queues decouple producers from consumers and absorb burst traffic that w..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "chunk_06",
+        "score": 0.32075798511505127,
+        "text_snippet": "Multi-tier caching reduces latency and database load. An in-process LRU cache se..."
+      }
+    ],
+    "mrr": 1.0,
+    "precision_at_k": 0.6667
+  },
+  {
+    "query": "How does the system handle peak load?",
+    "strategy": "B \u2014 Synonym expansion",
+    "expanded_query": "How does the system handle peak load? acme apex arrangement bill bloom blossom burden cargo consignment crest crown efflorescence",
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "chunk_00",
+        "score": 0.40224140882492065,
+        "text_snippet": "Horizontal autoscaling dynamically adjusts the number of running service instanc..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "chunk_06",
+        "score": 0.28159087896347046,
+        "text_snippet": "Multi-tier caching reduces latency and database load. An in-process LRU cache se..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "chunk_02",
+        "score": 0.25816288590431213,
+        "text_snippet": "Message queues decouple producers from consumers and absorb burst traffic that w..."
+      }
+    ],
+    "mrr": 1.0,
+    "precision_at_k": 0.6667
+  },
+  {
+    "query": "How does the system handle peak load?",
+    "strategy": "C \u2014 RRF (A \u222a B)",
+    "expanded_query": "How does the system handle peak load? acme apex arrangement bill bloom blossom burden cargo consignment crest crown efflorescence",
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "chunk_00",
+        "score": 0.032787,
+        "text_snippet": "Horizontal autoscaling dynamically adjusts the number of running service instanc..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "chunk_02",
+        "score": 0.032002,
+        "text_snippet": "Message queues decouple producers from consumers and absorb burst traffic that w..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "chunk_06",
+        "score": 0.032002,
+        "text_snippet": "Multi-tier caching reduces latency and database load. An in-process LRU cache se..."
+      }
+    ],
+    "mrr": 1.0,
+    "precision_at_k": 0.6667
+  },
+  {
+    "query": "What mechanisms ensure data consistency across nodes?",
+    "strategy": "A \u2014 Raw vector search",
+    "expanded_query": null,
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "chunk_05",
+        "score": 0.6402825117111206,
+        "text_snippet": "Distributed databases achieve consistency through consensus protocols such as Ra..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "chunk_06",
+        "score": 0.43780410289764404,
+        "text_snippet": "Multi-tier caching reduces latency and database load. An in-process LRU cache se..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "chunk_09",
+        "score": 0.318975567817688,
+        "text_snippet": "Vertex AI Matching Engine provides a managed approximate nearest-neighbour servi..."
+      }
+    ],
+    "mrr": 1.0,
+    "precision_at_k": 0.6667
+  },
+  {
+    "query": "What mechanisms ensure data consistency across nodes?",
+    "strategy": "B \u2014 Synonym expansion",
+    "expanded_query": "What mechanisms ensure data consistency across nodes? body client consistence data point datum eubstance guest information knob leaf node lymph gland lymph node",
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "chunk_05",
+        "score": 0.4633168578147888,
+        "text_snippet": "Distributed databases achieve consistency through consensus protocols such as Ra..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "chunk_06",
+        "score": 0.37486839294433594,
+        "text_snippet": "Multi-tier caching reduces latency and database load. An in-process LRU cache se..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "chunk_07",
+        "score": 0.25474095344543457,
+        "text_snippet": "Effective observability combines structured logs, metrics, and distributed trace..."
+      }
+    ],
+    "mrr": 1.0,
+    "precision_at_k": 1.0
+  },
+  {
+    "query": "What mechanisms ensure data consistency across nodes?",
+    "strategy": "C \u2014 RRF (A \u222a B)",
+    "expanded_query": "What mechanisms ensure data consistency across nodes? body client consistence data point datum eubstance guest information knob leaf node lymph gland lymph node",
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "chunk_05",
+        "score": 0.032787,
+        "text_snippet": "Distributed databases achieve consistency through consensus protocols such as Ra..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "chunk_06",
+        "score": 0.032258,
+        "text_snippet": "Multi-tier caching reduces latency and database load. An in-process LRU cache se..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "chunk_09",
+        "score": 0.015873,
+        "text_snippet": "Vertex AI Matching Engine provides a managed approximate nearest-neighbour servi..."
+      }
+    ],
+    "mrr": 1.0,
+    "precision_at_k": 0.6667
+  },
+  {
+    "query": "How is model inference optimised at serving time?",
+    "strategy": "A \u2014 Raw vector search",
+    "expanded_query": null,
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "chunk_04",
+        "score": 0.5518751740455627,
+        "text_snippet": "Optimising model inference at serving time involves several complementary techni..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "chunk_00",
+        "score": 0.28532323241233826,
+        "text_snippet": "Horizontal autoscaling dynamically adjusts the number of running service instanc..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "chunk_06",
+        "score": 0.26626163721084595,
+        "text_snippet": "Multi-tier caching reduces latency and database load. An in-process LRU cache se..."
+      }
+    ],
+    "mrr": 1.0,
+    "precision_at_k": 0.3333
+  },
+  {
+    "query": "How is model inference optimised at serving time?",
+    "strategy": "B \u2014 Synonym expansion",
+    "expanded_query": "How is model inference optimised at serving time? clip clock time fourth dimension illation meter metre prison term sentence",
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "chunk_04",
+        "score": 0.3280961513519287,
+        "text_snippet": "Optimising model inference at serving time involves several complementary techni..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "chunk_07",
+        "score": 0.20716425776481628,
+        "text_snippet": "Effective observability combines structured logs, metrics, and distributed trace..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "chunk_00",
+        "score": 0.17812179028987885,
+        "text_snippet": "Horizontal autoscaling dynamically adjusts the number of running service instanc..."
+      }
+    ],
+    "mrr": 1.0,
+    "precision_at_k": 0.3333
+  },
+  {
+    "query": "How is model inference optimised at serving time?",
+    "strategy": "C \u2014 RRF (A \u222a B)",
+    "expanded_query": "How is model inference optimised at serving time? clip clock time fourth dimension illation meter metre prison term sentence",
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "chunk_04",
+        "score": 0.032787,
+        "text_snippet": "Optimising model inference at serving time involves several complementary techni..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "chunk_00",
+        "score": 0.032002,
+        "text_snippet": "Horizontal autoscaling dynamically adjusts the number of running service instanc..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "chunk_07",
+        "score": 0.016129,
+        "text_snippet": "Effective observability combines structured logs, metrics, and distributed trace..."
+      }
+    ],
+    "mrr": 1.0,
+    "precision_at_k": 0.3333
+  }
+]
