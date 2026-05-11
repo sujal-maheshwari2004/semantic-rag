@@ -12,15 +12,15 @@
       },
       {
         "rank": 2,
-        "chunk_id": "chunk_02",
-        "score": 0.3582162857055664,
-        "text_snippet": "Message queues decouple producers from consumers and absorb burst traffic that w..."
+        "chunk_id": "chunk_10",
+        "score": 0.4244289994239807,
+        "text_snippet": "Layer-7 load balancers inspect HTTP headers and URL paths to route requests to t..."
       },
       {
         "rank": 3,
-        "chunk_id": "chunk_06",
-        "score": 0.32075798511505127,
-        "text_snippet": "Multi-tier caching reduces latency and database load. An in-process LRU cache se..."
+        "chunk_id": "chunk_41",
+        "score": 0.4012177586555481,
+        "text_snippet": "Continuous batching, also called iteration-level scheduling, inserts new request..."
       }
     ],
     "mrr": 1.0,
@@ -29,52 +29,52 @@
   {
     "query": "How does the system handle peak load?",
     "strategy": "B \u2014 Synonym expansion",
-    "expanded_query": "How does the system handle peak load? acme apex arrangement bill bloom blossom burden cargo consignment crest crown efflorescence",
+    "expanded_query": "Systems handle peak load through horizontal autoscaling that provisions additional service replicas when CPU utilisation or queue depth exceeds a threshold. Message queues absorb burst traffic and apply backpressure to upstream producers. Circuit breakers prevent overloaded dependencies from cascading failures. Multi-tier caching reduces database pressure during traffic spikes by serving hot keys from in-process or Redis caches.",
     "top_chunks": [
       {
         "rank": 1,
-        "chunk_id": "chunk_00",
-        "score": 0.40224140882492065,
-        "text_snippet": "Horizontal autoscaling dynamically adjusts the number of running service instanc..."
+        "chunk_id": "chunk_06",
+        "score": 0.6807599663734436,
+        "text_snippet": "Multi-tier caching reduces latency and database load. An in-process LRU cache se..."
       },
       {
         "rank": 2,
-        "chunk_id": "chunk_06",
-        "score": 0.28159087896347046,
-        "text_snippet": "Multi-tier caching reduces latency and database load. An in-process LRU cache se..."
+        "chunk_id": "chunk_00",
+        "score": 0.6652287244796753,
+        "text_snippet": "Horizontal autoscaling dynamically adjusts the number of running service instanc..."
       },
       {
         "rank": 3,
         "chunk_id": "chunk_02",
-        "score": 0.25816288590431213,
+        "score": 0.5846782326698303,
         "text_snippet": "Message queues decouple producers from consumers and absorb burst traffic that w..."
       }
     ],
-    "mrr": 1.0,
+    "mrr": 0.5,
     "precision_at_k": 0.6667
   },
   {
     "query": "How does the system handle peak load?",
     "strategy": "C \u2014 RRF (A \u222a B)",
-    "expanded_query": "How does the system handle peak load? acme apex arrangement bill bloom blossom burden cargo consignment crest crown efflorescence",
+    "expanded_query": "Systems handle peak load through horizontal autoscaling that provisions additional service replicas when CPU utilisation or queue depth exceeds a threshold. Message queues absorb burst traffic and apply backpressure to upstream producers. Circuit breakers prevent overloaded dependencies from cascading failures. Multi-tier caching reduces database pressure during traffic spikes by serving hot keys from in-process or Redis caches.",
     "top_chunks": [
       {
         "rank": 1,
         "chunk_id": "chunk_00",
-        "score": 0.032787,
+        "score": 0.032522,
         "text_snippet": "Horizontal autoscaling dynamically adjusts the number of running service instanc..."
       },
       {
         "rank": 2,
-        "chunk_id": "chunk_02",
-        "score": 0.032002,
-        "text_snippet": "Message queues decouple producers from consumers and absorb burst traffic that w..."
+        "chunk_id": "chunk_06",
+        "score": 0.016393,
+        "text_snippet": "Multi-tier caching reduces latency and database load. An in-process LRU cache se..."
       },
       {
         "rank": 3,
-        "chunk_id": "chunk_06",
-        "score": 0.032002,
-        "text_snippet": "Multi-tier caching reduces latency and database load. An in-process LRU cache se..."
+        "chunk_id": "chunk_10",
+        "score": 0.016129,
+        "text_snippet": "Layer-7 load balancers inspect HTTP headers and URL paths to route requests to t..."
       }
     ],
     "mrr": 1.0,
@@ -93,15 +93,15 @@
       },
       {
         "rank": 2,
-        "chunk_id": "chunk_06",
-        "score": 0.43780410289764404,
-        "text_snippet": "Multi-tier caching reduces latency and database load. An in-process LRU cache se..."
+        "chunk_id": "chunk_75",
+        "score": 0.4588947296142578,
+        "text_snippet": "Kafka exactly-once semantics prevent duplicate message production through idempo..."
       },
       {
         "rank": 3,
-        "chunk_id": "chunk_09",
-        "score": 0.318975567817688,
-        "text_snippet": "Vertex AI Matching Engine provides a managed approximate nearest-neighbour servi..."
+        "chunk_id": "chunk_06",
+        "score": 0.43780410289764404,
+        "text_snippet": "Multi-tier caching reduces latency and database load. An in-process LRU cache se..."
       }
     ],
     "mrr": 1.0,
@@ -110,25 +110,25 @@
   {
     "query": "What mechanisms ensure data consistency across nodes?",
     "strategy": "B \u2014 Synonym expansion",
-    "expanded_query": "What mechanisms ensure data consistency across nodes? body client consistence data point datum eubstance guest information knob leaf node lymph gland lymph node",
+    "expanded_query": "Data consistency across distributed nodes is maintained through consensus protocols such as Raft and Paxos, which commit writes only after a quorum of replicas acknowledge the entry. Read-your-writes consistency is enforced by routing reads to the leader or tagging requests with a logical timestamp. Cache invalidation is coordinated via pub-sub events to avoid stale reads from multi-tier caches.",
     "top_chunks": [
       {
         "rank": 1,
         "chunk_id": "chunk_05",
-        "score": 0.4633168578147888,
+        "score": 0.8941208124160767,
         "text_snippet": "Distributed databases achieve consistency through consensus protocols such as Ra..."
       },
       {
         "rank": 2,
         "chunk_id": "chunk_06",
-        "score": 0.37486839294433594,
+        "score": 0.600877046585083,
         "text_snippet": "Multi-tier caching reduces latency and database load. An in-process LRU cache se..."
       },
       {
         "rank": 3,
-        "chunk_id": "chunk_07",
-        "score": 0.25474095344543457,
-        "text_snippet": "Effective observability combines structured logs, metrics, and distributed trace..."
+        "chunk_id": "chunk_63",
+        "score": 0.5241878032684326,
+        "text_snippet": "PostgreSQL streaming replication ships WAL records from the primary to standby i..."
       }
     ],
     "mrr": 1.0,
@@ -137,7 +137,7 @@
   {
     "query": "What mechanisms ensure data consistency across nodes?",
     "strategy": "C \u2014 RRF (A \u222a B)",
-    "expanded_query": "What mechanisms ensure data consistency across nodes? body client consistence data point datum eubstance guest information knob leaf node lymph gland lymph node",
+    "expanded_query": "Data consistency across distributed nodes is maintained through consensus protocols such as Raft and Paxos, which commit writes only after a quorum of replicas acknowledge the entry. Read-your-writes consistency is enforced by routing reads to the leader or tagging requests with a logical timestamp. Cache invalidation is coordinated via pub-sub events to avoid stale reads from multi-tier caches.",
     "top_chunks": [
       {
         "rank": 1,
@@ -148,14 +148,14 @@
       {
         "rank": 2,
         "chunk_id": "chunk_06",
-        "score": 0.032258,
+        "score": 0.032002,
         "text_snippet": "Multi-tier caching reduces latency and database load. An in-process LRU cache se..."
       },
       {
         "rank": 3,
-        "chunk_id": "chunk_09",
-        "score": 0.015873,
-        "text_snippet": "Vertex AI Matching Engine provides a managed approximate nearest-neighbour servi..."
+        "chunk_id": "chunk_75",
+        "score": 0.016129,
+        "text_snippet": "Kafka exactly-once semantics prevent duplicate message production through idempo..."
       }
     ],
     "mrr": 1.0,
@@ -174,15 +174,15 @@
       },
       {
         "rank": 2,
-        "chunk_id": "chunk_00",
-        "score": 0.28532323241233826,
-        "text_snippet": "Horizontal autoscaling dynamically adjusts the number of running service instanc..."
+        "chunk_id": "chunk_26",
+        "score": 0.4395155608654022,
+        "text_snippet": "Batch inference pipelines score large datasets offline using distributed framewo..."
       },
       {
         "rank": 3,
-        "chunk_id": "chunk_06",
-        "score": 0.26626163721084595,
-        "text_snippet": "Multi-tier caching reduces latency and database load. An in-process LRU cache se..."
+        "chunk_id": "chunk_49",
+        "score": 0.3900817632675171,
+        "text_snippet": "Semantic caching stores LLM responses keyed by the embedding of the query rather..."
       }
     ],
     "mrr": 1.0,
@@ -191,55 +191,55 @@
   {
     "query": "How is model inference optimised at serving time?",
     "strategy": "B \u2014 Synonym expansion",
-    "expanded_query": "How is model inference optimised at serving time? clip clock time fourth dimension illation meter metre prison term sentence",
+    "expanded_query": "Model inference at serving time is optimised through quantisation, which reduces weight precision from FP32 to INT8 with minimal accuracy loss, operator fusion that collapses consecutive GPU kernels, and dynamic batching that groups concurrent requests to maximise hardware utilisation. Speculative decoding uses a small draft model to propose tokens verified by the main model in parallel. Paged attention manages KV cache memory for thousands of concurrent sequences without fragmentation.",
     "top_chunks": [
       {
         "rank": 1,
-        "chunk_id": "chunk_04",
-        "score": 0.3280961513519287,
-        "text_snippet": "Optimising model inference at serving time involves several complementary techni..."
+        "chunk_id": "chunk_40",
+        "score": 0.7011122703552246,
+        "text_snippet": "The key-value cache stores intermediate attention states for previously processe..."
       },
       {
         "rank": 2,
-        "chunk_id": "chunk_07",
-        "score": 0.20716425776481628,
-        "text_snippet": "Effective observability combines structured logs, metrics, and distributed trace..."
+        "chunk_id": "chunk_04",
+        "score": 0.6943612098693848,
+        "text_snippet": "Optimising model inference at serving time involves several complementary techni..."
       },
       {
         "rank": 3,
-        "chunk_id": "chunk_00",
-        "score": 0.17812179028987885,
-        "text_snippet": "Horizontal autoscaling dynamically adjusts the number of running service instanc..."
+        "chunk_id": "chunk_39",
+        "score": 0.6654872894287109,
+        "text_snippet": "Speculative decoding accelerates autoregressive generation by running a small dr..."
       }
     ],
     "mrr": 1.0,
-    "precision_at_k": 0.3333
+    "precision_at_k": 1.0
   },
   {
     "query": "How is model inference optimised at serving time?",
     "strategy": "C \u2014 RRF (A \u222a B)",
-    "expanded_query": "How is model inference optimised at serving time? clip clock time fourth dimension illation meter metre prison term sentence",
+    "expanded_query": "Model inference at serving time is optimised through quantisation, which reduces weight precision from FP32 to INT8 with minimal accuracy loss, operator fusion that collapses consecutive GPU kernels, and dynamic batching that groups concurrent requests to maximise hardware utilisation. Speculative decoding uses a small draft model to propose tokens verified by the main model in parallel. Paged attention manages KV cache memory for thousands of concurrent sequences without fragmentation.",
     "top_chunks": [
       {
         "rank": 1,
         "chunk_id": "chunk_04",
-        "score": 0.032787,
+        "score": 0.032522,
         "text_snippet": "Optimising model inference at serving time involves several complementary techni..."
       },
       {
         "rank": 2,
-        "chunk_id": "chunk_00",
-        "score": 0.032002,
-        "text_snippet": "Horizontal autoscaling dynamically adjusts the number of running service instanc..."
+        "chunk_id": "chunk_40",
+        "score": 0.016393,
+        "text_snippet": "The key-value cache stores intermediate attention states for previously processe..."
       },
       {
         "rank": 3,
-        "chunk_id": "chunk_07",
+        "chunk_id": "chunk_26",
         "score": 0.016129,
-        "text_snippet": "Effective observability combines structured logs, metrics, and distributed trace..."
+        "text_snippet": "Batch inference pipelines score large datasets offline using distributed framewo..."
       }
     ],
     "mrr": 1.0,
-    "precision_at_k": 0.3333
+    "precision_at_k": 0.6667
   }
 ]

@@ -15,33 +15,33 @@
 
 ## Query: _How does the system handle peak load?_
 
-**Strategy B expanded query:** `How does the system handle peak load? acme apex arrangement bill bloom blossom burden cargo consignment crest [...]`
+**Strategy B expanded query:** `Systems handle peak load through horizontal autoscaling that provisions additional service replicas when CPU [...]`
 
 | Strategy | Rank 1 | Rank 2 | Rank 3 | MRR | P@3 |
 |---|---|---|---|---|---|
-| A — Raw vector search | chunk_00 | chunk_02 | chunk_06 | 1.0 | 0.6667 |
-| B — Synonym expansion | chunk_00 | chunk_06 | chunk_02 | 1.0 | 0.6667 |
-| C — RRF (A ∪ B) | chunk_00 | chunk_02 | chunk_06 | 1.0 | 0.6667 |
+| A — Raw vector search | chunk_00 | chunk_10 | chunk_41 | 1.0 | 0.6667 |
+| B — Synonym expansion | chunk_06 | chunk_00 | chunk_02 | 0.5 | 0.6667 |
+| C — RRF (A ∪ B) | chunk_00 | chunk_06 | chunk_10 | 1.0 | 0.6667 |
 
 ## Query: _What mechanisms ensure data consistency across nodes?_
 
-**Strategy B expanded query:** `What mechanisms ensure data consistency across nodes? body client consistence data point datum eubstance guest [...]`
+**Strategy B expanded query:** `Data consistency across distributed nodes is maintained through consensus protocols such as Raft and Paxos, which [...]`
 
 | Strategy | Rank 1 | Rank 2 | Rank 3 | MRR | P@3 |
 |---|---|---|---|---|---|
-| A — Raw vector search | chunk_05 | chunk_06 | chunk_09 | 1.0 | 0.6667 |
-| B — Synonym expansion | chunk_05 | chunk_06 | chunk_07 | 1.0 | 1.0 |
-| C — RRF (A ∪ B) | chunk_05 | chunk_06 | chunk_09 | 1.0 | 0.6667 |
+| A — Raw vector search | chunk_05 | chunk_75 | chunk_06 | 1.0 | 0.6667 |
+| B — Synonym expansion | chunk_05 | chunk_06 | chunk_63 | 1.0 | 1.0 |
+| C — RRF (A ∪ B) | chunk_05 | chunk_06 | chunk_75 | 1.0 | 0.6667 |
 
 ## Query: _How is model inference optimised at serving time?_
 
-**Strategy B expanded query:** `How is model inference optimised at serving time? clip clock time fourth dimension illation meter metre prison [...]`
+**Strategy B expanded query:** `Model inference at serving time is optimised through quantisation, which reduces weight precision from FP32 to [...]`
 
 | Strategy | Rank 1 | Rank 2 | Rank 3 | MRR | P@3 |
 |---|---|---|---|---|---|
-| A — Raw vector search | chunk_04 | chunk_00 | chunk_06 | 1.0 | 0.3333 |
-| B — Synonym expansion | chunk_04 | chunk_07 | chunk_00 | 1.0 | 0.3333 |
-| C — RRF (A ∪ B) | chunk_04 | chunk_00 | chunk_07 | 1.0 | 0.3333 |
+| A — Raw vector search | chunk_04 | chunk_26 | chunk_49 | 1.0 | 0.3333 |
+| B — Synonym expansion | chunk_40 | chunk_04 | chunk_39 | 1.0 | 1.0 |
+| C — RRF (A ∪ B) | chunk_04 | chunk_40 | chunk_26 | 1.0 | 0.6667 |
 
 ## Similarity Metric: Cosine vs Euclidean
 
