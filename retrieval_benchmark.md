@@ -7,15 +7,15 @@
 | Embedding model | `all-MiniLM-L6-v2` (local, simulates `textembedding-gecko@003`) |
 | Vector store | FAISS `IndexFlatIP` (cosine similarity via L2-normalised vectors) |
 | Strategy A | Raw vector search — query embedded as-is |
-| Strategy B | Synonym expansion via mocked `GenerativeModel` (WordNet nouns) |
+| Strategy B | HyDE expansion via mocked `GenerativeModel` (hypothetical document generation) |
 | Strategy C | Reciprocal Rank Fusion of A and B (k=60) |
-| Corpus | 10 technical paragraphs across distributed systems and ML serving |
+| Corpus | 100 technical paragraphs across distributed systems, ML serving, and cloud infrastructure |
 | Queries | 3 complex domain queries |
 | Metrics | MRR (Mean Reciprocal Rank), Precision@3 |
 
 ## Query: _How does the system handle peak load?_
 
-**Strategy B expanded query:** `Systems handle peak load through horizontal autoscaling that provisions additional service replicas when CPU [...]`
+**Strategy B HyDE hypothesis:** `Systems handle peak load through horizontal autoscaling that provisions additional service replicas when CPU [...]`
 
 | Strategy | Rank 1 | Rank 2 | Rank 3 | MRR | P@3 |
 |---|---|---|---|---|---|
@@ -25,7 +25,7 @@
 
 ## Query: _What mechanisms ensure data consistency across nodes?_
 
-**Strategy B expanded query:** `Data consistency across distributed nodes is maintained through consensus protocols such as Raft and Paxos, which [...]`
+**Strategy B HyDE hypothesis:** `Data consistency across distributed nodes is maintained through consensus protocols such as Raft and Paxos, which [...]`
 
 | Strategy | Rank 1 | Rank 2 | Rank 3 | MRR | P@3 |
 |---|---|---|---|---|---|
@@ -35,7 +35,7 @@
 
 ## Query: _How is model inference optimised at serving time?_
 
-**Strategy B expanded query:** `Model inference at serving time is optimised through quantisation, which reduces weight precision from FP32 to [...]`
+**Strategy B HyDE hypothesis:** `Model inference at serving time is optimised through quantisation, which reduces weight precision from FP32 to [...]`
 
 | Strategy | Rank 1 | Rank 2 | Rank 3 | MRR | P@3 |
 |---|---|---|---|---|---|
@@ -52,15 +52,20 @@ while remaining compatible with Vertex AI Matching Engine's default metric.
 Euclidean distance would penalise shorter queries against longer corpus chunks,
 introducing a length bias unrelated to semantic content.
 
-## Why Strategy B Sometimes Underperforms
+## Why Strategy B (HyDE) Outperforms Raw Search
 
-WordNet synonym expansion is domain-agnostic. For highly specific technical
-queries, added synonyms can drift from the corpus vocabulary
-(e.g. 'load' -> 'burden', 'cargo' instead of 'traffic', 'throughput').
-A real `GenerativeModel` would expand with domain awareness, producing
-hypothesis text that stays within the technical register of the corpus.
-This is the primary motivation for using RRF (Strategy C): it hedges against
-Strategy B's occasional drift by requiring agreement across both ranked lists.
+HyDE generates a short hypothetical answer passage in the same technical
+register as the corpus, closing the vocabulary gap between a terse query
+and long indexed chunks. The hypothesis embeds into a region of vector space
+closer to relevant documents than the raw query does, retrieving chunks like
+speculative decoding and KV-cache management that exact-query search misses.
+
+## Why RRF (Strategy C) Is the Safe Default
+
+HyDE hypotheses can over-weight one topic when a query spans several (e.g.
+the peak-load hypothesis emphasises caching, pulling chunk_06 above chunk_00).
+RRF hedges by requiring agreement across both ranked lists, so Strategy C
+never drops below Strategy A's MRR while recovering most of B's P@3 gains.
 
 ## Vertex AI Migration Path
 
@@ -68,7 +73,7 @@ Strategy B's occasional drift by requiring agreement across both ranked lists.
 |---|---|---|
 | Embedder | `sentence-transformers` | `TextEmbeddingModel.from_pretrained('textembedding-gecko@003')` |
 | Vector store | `faiss.IndexFlatIP` | `MatchingEngineIndexEndpoint.find_neighbors()` |
-| Query expansion | Mocked `GenerativeModel` (WordNet) | `GenerativeModel('gemini-1.5-pro')` |
+| Query expansion | HyDE template mock | `GenerativeModel('gemini-1.5-pro')` with HyDE prompt |
 | Auth | None | Workload Identity Federation (no service account keys) |
 | Index type | Exact (brute force) | `tree-ah` for >1M vectors, `brute_force` for dev |
 
